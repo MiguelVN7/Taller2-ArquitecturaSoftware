@@ -63,3 +63,12 @@ Pokedex/
 - Frases filosóficas de Pokeneas
 - Integración con Amazon S3
 - Interfaz responsiva
+
+## Docker
+
+Para construir y ejecutar la aplicación con Docker:
+
+```bash
+docker build -t pokedex-pokeneas .
+docker run -p 5000:5000 --env-file .env pokedex-pokeneas
+```

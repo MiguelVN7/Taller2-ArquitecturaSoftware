@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Pokemon #{{ pokemon_id }} - Pokedex{% endblock %}
+
+{% block content %}
+<div class="pokemon-detail">
+    <div class="back-button">
+        <a href="/">&larr; Volver</a>
+    </div>
+    
+    <div class="detail-container">
+        <div class="detail-image">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon_id }}.png" 
+                 alt="Pokemon #{{ pokemon_id }}">
+        </div>
+        
+        <div class="detail-info">
+            <h2>#{{ '%03d' % pokemon_id }} Pokemon Name</h2>
+            
+            <div class="stats">
+                <h3>Estadísticas</h3>
+                <div class="stat-bar">
+                    <span class="stat-name">HP:</span>
+                    <div class="bar">
+                        <div class="bar-fill" style="width: 45%;">45</div>
+                    </div>
+                </div>
+                <div class="stat-bar">
+                    <span class="stat-name">Ataque:</span>
+                    <div class="bar">
+                        <div class="bar-fill" style="width: 49%;">49</div>
+                    </div>
+                </div>
+                <div class="stat-bar">
+                    <span class="stat-name">Defensa:</span>
+                    <div class="bar">
+                        <div class="bar-fill" style="width: 49%;">49</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="abilities">
+                <h3>Habilidades</h3>
+                <ul>
+                    <li>Habilidad 1</li>
+                    <li>Habilidad 2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

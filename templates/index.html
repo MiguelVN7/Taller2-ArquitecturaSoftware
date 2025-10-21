@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex Antioqueña - Pokeneas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .container-info {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+            font-family: 'Courier New', monospace;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+
+        .section-icon img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .section-card h2 {
+            color: #414345;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .section-card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(65, 67, 69, 0.4);
+        }
+
+        .info-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section h2 {
+            color: #414345;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        .info-section li strong {
+            color: #414345;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⭕⚪ Pokedex Antioqueña ⭕⚪</h1>
+        <p>Información sobre los Pokeneas de Antioquia</p>
+    </div>
+
+    <div class="container-info">
+        <strong>Container ID:</strong> {{ id_contenedor }}
+    </div>
+
+    <div class="main-content">
+        <div class="sections">
+            <div class="section-card">
+                <div class="section-icon">
+                    <img src="{{ url_for('static', filename='images/pokeball.png') }}" alt="Pokébola">
+                </div>
+                <h2>Pokenea Aleatorio</h2>
+                <p>Se muestra un Pokenea aleatorio en formato JSON, con su id, nombre, altura y habilidad.</p>
+                <a href="/pokenea/json" class="btn">Ver JSON</a>
+            </div>
+
+            <div class="section-card">
+                <div class="section-icon">
+                    <img src="{{ url_for('static', filename='images/dito.png') }}" alt="Dito">
+                </div>
+                <h2>Filosofía Pokenea</h2>
+                <p>Se muestra la imagen y la frase filosófica de un Pokenea aleatorio.</p>
+                <a href="/pokenea/filosofia" class="btn">Ver Filosofía</a>
+            </div>
+
+            <div class="section-card">
+                <div class="section-icon">
+                    <img src="{{ url_for('static', filename='images/lista.png') }}" alt="Lista">
+                </div>
+                <h2>Lista Completa</h2>
+                <p>Se muestra una lista de todos los Pokeneas disponibles en formato JSON.</p>
+                <a href="/api/pokemon" class="btn">Ver Todos</a>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Sobre los Pokeneas</h2>
+            <ul>
+                <li><strong>Origen:</strong>Antioquia, Colombia</li>
+                <li><strong>Características:</strong> ID, nombre, altura, frase filosófica, imagen y habilidad única</li>
+                <li><strong>Total:</strong> 10 Pokeneas diferentes para descubrir</li>
+                <li><strong>Habilidades:</strong> Desde pedir descuentos hasta montar en el metro sin caerse</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

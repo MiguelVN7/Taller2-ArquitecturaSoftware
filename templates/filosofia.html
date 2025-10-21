@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofía Pokenea - {{ pokenea.nombre }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #414345;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .pokenea-image {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #23252620 0%, #41434520 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(65, 67, 69, 0.3);
+        }
+
+        .pokenea-image img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .pokenea-image:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .frase {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.4em;
+            font-style: italic;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .frase::before {
+            content: '"';
+            font-size: 4em;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .frase::after {
+            content: '"';
+            font-size: 4em;
+            position: absolute;
+            bottom: -50px;
+            right: 20px;
+            opacity: 0.3;
+        }
+
+        .container-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        .container-info strong {
+            color: #414345;
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #414345;
+            border: 2px solid #414345;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .frase {
+                font-size: 1.2em;
+                padding: 20px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ pokenea.nombre }}</h1>
+        <p class="subtitle">Pokenea Antioqueño #{{ pokenea.id }}</p>
+
+        <div class="pokenea-image">
+            <img src="{{ pokenea.imagen }}" alt="{{ pokenea.nombre }}">
+        </div>
+
+        <div class="frase">
+            {{ pokenea.frase_filosofica }}
+        </div>
+
+        <div class="container-info">
+            <strong>Container ID:</strong> {{ id_contenedor }}
+        </div>
+
+        <div class="btn-container">
+            <button class="btn btn-primary" onclick="location.reload()">
+                🔄 Otra Filosofía
+            </button>
+            <a href="/" class="btn btn-secondary">
+                🏠 Inicio
+            </a>
+            <a href="/pokenea/json" class="btn btn-secondary">
+                📊 Ver JSON
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -41,3 +41,8 @@ instance/
 # OS
 .DS_Store
 Thumbs.db
+
+# AWS Deployment (credenciales sensibles)
+DEPLOYMENT_COMMANDS.md
+*.pem
+*.key
